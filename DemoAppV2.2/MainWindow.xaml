@@ -5,7 +5,8 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:viewModels="clr-namespace:DemoAppV2._2.ViewModel"
+                      xmlns:viewModels="clr-namespace:DemoAppV2._2.ViewModel" 
+                      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                       mc:Ignorable="d"
                       Title="Demo App - MahApp - v2.2" Height="450" Width="800"
                       Background="WhiteSmoke" Loaded="OnLoaded">
@@ -28,7 +29,12 @@
 
             <DataTemplate x:Key="MenuItemTemplate"
                           DataType="{x:Type viewModels:MenuItem}">
-                <Grid Height="48">
+                <Grid Height="48" Background="Transparent">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseUp">
+                            <i:InvokeCommandAction Command="{Binding Command}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="48" />
                         <ColumnDefinition />
